@@ -10,32 +10,82 @@ function App() {
     'Machine Learning',
     'Data Analysis',
     'Pandas',
+    'NumPy',
     'Scikit-Learn',
     'Power BI',
     'Git & GitHub',
+    'React',
   ]
 
   const projects = [
     {
       title: 'Titanic Survival Prediction',
       description:
-        'Machine learning project that predicts whether a passenger survived using Titanic passenger data.',
+        'A machine learning project that predicts passenger survival using Titanic passenger information.',
       technology: 'Python • Pandas • Scikit-Learn',
       link: 'https://github.com/Vipin0923/CODSOFT',
     },
     {
       title: 'Movie Rating Prediction',
       description:
-        'Regression project created to estimate movie ratings using historical movie information.',
+        'A regression-based project created to estimate movie ratings using historical movie data.',
       technology: 'Python • Regression • Data Analysis',
       link: 'https://github.com/Vipin0923/CODSOFT',
     },
     {
       title: 'Iris Flower Classification',
       description:
-        'Classification model that predicts the species of an Iris flower using its measurements.',
+        'A classification model that predicts the species of an Iris flower using its measurements.',
       technology: 'Python • Classification • Scikit-Learn',
       link: 'https://github.com/Vipin0923/CODSOFT',
+    },
+  ]
+
+  const certificates = [
+    {
+      title: 'Data Science Internship',
+      organization: 'CODSOFT',
+      description:
+        'Completed a one-month Data Science internship and worked on three machine learning projects.',
+    },
+    {
+      title: 'Machine Learning Projects',
+      organization: 'Practical Learning',
+      description:
+        'Built classification and regression projects using Python, Pandas and Scikit-Learn.',
+    },
+    {
+      title: 'Portfolio Development',
+      organization: 'React + Vite',
+      description:
+        'Designed, developed and deployed a professional portfolio website using React and GitHub Pages.',
+    },
+  ]
+
+  const achievements = [
+    {
+      number: '01',
+      title: 'Completed Three Data Science Projects',
+      description:
+        'Successfully completed Titanic, Movie Rating and Iris Flower machine learning projects.',
+    },
+    {
+      number: '02',
+      title: 'Completed CODSOFT Internship',
+      description:
+        'Completed a one-month Data Science internship and gained practical project experience.',
+    },
+    {
+      number: '03',
+      title: 'Created a Live Portfolio',
+      description:
+        'Built and deployed a responsive React portfolio website using GitHub Pages.',
+    },
+    {
+      number: '04',
+      title: 'Organized Projects on GitHub',
+      description:
+        'Structured and uploaded Data Science projects with code, datasets and documentation.',
     },
   ]
 
@@ -69,6 +119,14 @@ function App() {
           </li>
 
           <li>
+            <a href="#certificates">Certificates</a>
+          </li>
+
+          <li>
+            <a href="#achievements">Achievements</a>
+          </li>
+
+          <li>
             <a href="#contact">Contact</a>
           </li>
         </ul>
@@ -77,26 +135,36 @@ function App() {
       <main>
         {/* Hero Section */}
         <section id="home" className="hero-section">
-          <div className="hero-content">
-            <img
-              src={profileImg}
-              alt="Vipin Vishwakarma"
-              className="profile-img"
-            />
+          <div className="background-glow glow-one"></div>
+          <div className="background-glow glow-two"></div>
+
+          <div className="hero-content glass-card">
+            <div className="profile-border">
+              <img
+                src={profileImg}
+                alt="Vipin Vishwakarma"
+                className="profile-img"
+              />
+            </div>
 
             <p className="intro-text">Hello, I am</p>
 
             <h1>Vipin Vishwakarma</h1>
 
-            <h2>Data Science Student</h2>
+            <div className="typing-container">
+              <span className="typing-text">
+                Data Science Student | ML Enthusiast
+              </span>
+            </div>
 
             <p className="hero-description">
               I am passionate about Data Science, Machine Learning, Artificial
-              Intelligence and building useful projects with real-world data.
+              Intelligence and building useful solutions with real-world data.
             </p>
 
             <p className="technology-text">
-              Python • Machine Learning • Data Analytics • AI
+              Python <span>•</span> Machine Learning <span>•</span> Data
+              Analytics <span>•</span> Artificial Intelligence
             </p>
 
             <div className="hero-buttons">
@@ -125,7 +193,7 @@ function App() {
 
             <div className="college-info">
               <p>Technocrats Institute of Technology, Bhopal</p>
-              <p>Second Year • CGPA: 6.98</p>
+              <p>Second Year • Data Science • CGPA: 6.98</p>
             </div>
           </div>
         </section>
@@ -138,46 +206,50 @@ function App() {
           </div>
 
           <div className="about-container">
-            <div className="about-card">
+            <article className="about-card glass-card">
               <h3>Who I Am</h3>
 
               <p>
                 I am a Data Science student at Technocrats Institute of
-                Technology, Bhopal. I am currently developing my skills in
-                Python, Machine Learning, Data Analysis and Artificial
-                Intelligence.
+                Technology, Bhopal. I am developing my skills in Python,
+                Machine Learning, Data Analysis and Artificial Intelligence.
               </p>
 
               <p>
-                I enjoy working with datasets, finding meaningful patterns and
-                building beginner-friendly machine learning projects.
+                I enjoy working with datasets, discovering meaningful patterns
+                and creating beginner-friendly machine learning solutions.
               </p>
-            </div>
+
+              <p>
+                My goal is to become a skilled Data Scientist and contribute to
+                real-world data-driven projects.
+              </p>
+            </article>
 
             <div className="details-grid">
-              <div className="detail-card">
+              <article className="detail-card glass-card">
                 <span>01</span>
                 <h3>Education</h3>
                 <p>Data Science Student</p>
-              </div>
+              </article>
 
-              <div className="detail-card">
+              <article className="detail-card glass-card">
                 <span>02</span>
                 <h3>Current Year</h3>
                 <p>Second Year</p>
-              </div>
+              </article>
 
-              <div className="detail-card">
+              <article className="detail-card glass-card">
                 <span>03</span>
                 <h3>Internship</h3>
                 <p>CODSOFT Data Science</p>
-              </div>
+              </article>
 
-              <div className="detail-card">
+              <article className="detail-card glass-card">
                 <span>04</span>
                 <h3>Location</h3>
                 <p>Bhopal, India</p>
-              </div>
+              </article>
             </div>
           </div>
         </section>
@@ -185,16 +257,16 @@ function App() {
         {/* Skills Section */}
         <section id="skills" className="section skills-section">
           <div className="section-heading">
-            <p>What I Know</p>
+            <p>Technologies I Work With</p>
             <h2>My Skills</h2>
           </div>
 
           <div className="skills-grid">
             {skills.map((skill, index) => (
-              <div className="skill-card" key={skill}>
+              <article className="skill-card glass-card" key={skill}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <h3>{skill}</h3>
-              </div>
+              </article>
             ))}
           </div>
         </section>
@@ -202,13 +274,13 @@ function App() {
         {/* Projects Section */}
         <section id="projects" className="section projects-section">
           <div className="section-heading">
-            <p>My Work</p>
+            <p>My Practical Work</p>
             <h2>Projects</h2>
           </div>
 
           <div className="projects-grid">
             {projects.map((project, index) => (
-              <article className="project-card" key={project.title}>
+              <article className="project-card glass-card" key={project.title}>
                 <span className="project-number">
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -233,72 +305,106 @@ function App() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="section skills-section">
+        <section id="experience" className="section experience-section">
           <div className="section-heading">
             <p>My Practical Experience</p>
             <h2>Experience</h2>
           </div>
 
-          <div className="projects-grid">
-            <article className="project-card">
-              <span className="project-number">01</span>
-
-              <h3>Data Science Intern — CODSOFT</h3>
-
-              <p>
-                Completed a one-month Data Science internship where I worked on
-                machine learning and data analysis projects using real-world
-                datasets.
-              </p>
-
-              <div className="project-tech">
-                Duration: 1 Month
+          <div className="experience-container glass-card">
+            <div className="experience-header">
+              <div>
+                <p className="experience-company">CODSOFT</p>
+                <h3>Data Science Intern</h3>
               </div>
-            </article>
 
-            <article className="project-card">
-              <span className="project-number">02</span>
+              <span className="experience-duration">1 Month</span>
+            </div>
 
-              <h3>Projects Completed</h3>
+            <p className="experience-description">
+              Completed a Data Science internship focused on Machine Learning,
+              Data Analysis and practical project development.
+            </p>
 
-              <p>
-                Built Titanic Survival Prediction, Movie Rating Prediction and
-                Iris Flower Classification projects during the internship.
-              </p>
+            <ul className="experience-list">
+              <li>Built a Titanic Survival Prediction model.</li>
+              <li>Developed a Movie Rating Prediction project.</li>
+              <li>Created an Iris Flower Classification model.</li>
+              <li>Worked with Python, Pandas, NumPy and Scikit-Learn.</li>
+              <li>Improved data cleaning and model evaluation skills.</li>
+              <li>Uploaded structured project files to GitHub.</li>
+            </ul>
+          </div>
+        </section>
 
-              <div className="project-tech">
-                Machine Learning • Classification • Regression
-              </div>
-            </article>
+        {/* Certificates Section */}
+        <section id="certificates" className="section certificates-section">
+          <div className="section-heading">
+            <p>Learning and Recognition</p>
+            <h2>Certificates</h2>
+          </div>
 
-            <article className="project-card">
-              <span className="project-number">03</span>
+          <div className="certificates-grid">
+            {certificates.map((certificate, index) => (
+              <article
+                className="certificate-card glass-card"
+                key={certificate.title}
+              >
+                <span className="certificate-number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-              <h3>Skills Developed</h3>
+                <div className="certificate-icon">✓</div>
 
-              <p>
-                Improved my understanding of data cleaning, exploratory data
-                analysis, model training, testing and project documentation.
-              </p>
+                <h3>{certificate.title}</h3>
 
-              <div className="project-tech">
-                Python • Pandas • NumPy • Scikit-Learn
-              </div>
-            </article>
+                <p className="certificate-organization">
+                  {certificate.organization}
+                </p>
+
+                <p>{certificate.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section id="achievements" className="section achievements-section">
+          <div className="section-heading">
+            <p>My Progress</p>
+            <h2>Achievements</h2>
+          </div>
+
+          <div className="achievements-grid">
+            {achievements.map((achievement) => (
+              <article
+                className="achievement-card glass-card"
+                key={achievement.number}
+              >
+                <span className="achievement-number">
+                  {achievement.number}
+                </span>
+
+                <div>
+                  <h3>{achievement.title}</h3>
+                  <p>{achievement.description}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         {/* Contact Section */}
         <section id="contact" className="section contact-section">
-          <div className="contact-card">
+          <div className="contact-card glass-card">
             <div className="section-heading">
               <p>Get in Touch</p>
               <h2>Contact Me</h2>
             </div>
 
             <p className="contact-description">
-              I am open to internships, learning opportunities and beginner
-              Data Science projects.
+              I am open to internships, learning opportunities, collaborations
+              and beginner Data Science projects.
             </p>
 
             <a
@@ -345,7 +451,7 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <p>© 2026 Vipin Vishwakarma</p>
-        <p>Built with React and Vite</p>
+        <p>Designed and developed using React + Vite</p>
       </footer>
     </>
   )
