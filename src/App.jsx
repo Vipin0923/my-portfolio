@@ -2,6 +2,8 @@ import './App.css'
 import profileImg from './assets/profile.jpg'
 
 function App() {
+  const resumeUrl = `${import.meta.env.BASE_URL}Resume.pdf`
+
   const skills = [
     'Python',
     'SQL',
@@ -39,6 +41,7 @@ function App() {
 
   return (
     <>
+      {/* Navbar */}
       <nav className="navbar">
         <a href="#home" className="logo">
           Vipin<span>.</span>
@@ -48,15 +51,23 @@ function App() {
           <li>
             <a href="#home">Home</a>
           </li>
+
           <li>
             <a href="#about">About</a>
           </li>
+
           <li>
             <a href="#skills">Skills</a>
           </li>
+
           <li>
             <a href="#projects">Projects</a>
           </li>
+
+          <li>
+            <a href="#experience">Experience</a>
+          </li>
+
           <li>
             <a href="#contact">Contact</a>
           </li>
@@ -64,6 +75,7 @@ function App() {
       </nav>
 
       <main>
+        {/* Hero Section */}
         <section id="home" className="hero-section">
           <div className="hero-content">
             <img
@@ -88,7 +100,7 @@ function App() {
             </p>
 
             <div className="hero-buttons">
-              <a href="/my-portfolio/Resume.pdf" download className="primary-btn">
+              <a href={resumeUrl} download className="primary-btn">
                 Download Resume
               </a>
 
@@ -118,6 +130,7 @@ function App() {
           </div>
         </section>
 
+        {/* About Section */}
         <section id="about" className="section about-section">
           <div className="section-heading">
             <p>Introduction</p>
@@ -169,6 +182,7 @@ function App() {
           </div>
         </section>
 
+        {/* Skills Section */}
         <section id="skills" className="section skills-section">
           <div className="section-heading">
             <p>What I Know</p>
@@ -185,6 +199,7 @@ function App() {
           </div>
         </section>
 
+        {/* Projects Section */}
         <section id="projects" className="section projects-section">
           <div className="section-heading">
             <p>My Work</p>
@@ -217,6 +232,63 @@ function App() {
           </div>
         </section>
 
+        {/* Experience Section */}
+        <section id="experience" className="section skills-section">
+          <div className="section-heading">
+            <p>My Practical Experience</p>
+            <h2>Experience</h2>
+          </div>
+
+          <div className="projects-grid">
+            <article className="project-card">
+              <span className="project-number">01</span>
+
+              <h3>Data Science Intern — CODSOFT</h3>
+
+              <p>
+                Completed a one-month Data Science internship where I worked on
+                machine learning and data analysis projects using real-world
+                datasets.
+              </p>
+
+              <div className="project-tech">
+                Duration: 1 Month
+              </div>
+            </article>
+
+            <article className="project-card">
+              <span className="project-number">02</span>
+
+              <h3>Projects Completed</h3>
+
+              <p>
+                Built Titanic Survival Prediction, Movie Rating Prediction and
+                Iris Flower Classification projects during the internship.
+              </p>
+
+              <div className="project-tech">
+                Machine Learning • Classification • Regression
+              </div>
+            </article>
+
+            <article className="project-card">
+              <span className="project-number">03</span>
+
+              <h3>Skills Developed</h3>
+
+              <p>
+                Improved my understanding of data cleaning, exploratory data
+                analysis, model training, testing and project documentation.
+              </p>
+
+              <div className="project-tech">
+                Python • Pandas • NumPy • Scikit-Learn
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* Contact Section */}
         <section id="contact" className="section contact-section">
           <div className="contact-card">
             <div className="section-heading">
@@ -270,6 +342,7 @@ function App() {
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="footer">
         <p>© 2026 Vipin Vishwakarma</p>
         <p>Built with React and Vite</p>
