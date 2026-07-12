@@ -2,155 +2,278 @@ import './App.css'
 import profileImg from './assets/profile.jpg'
 
 function App() {
+  const skills = [
+    'Python',
+    'SQL',
+    'Machine Learning',
+    'Data Analysis',
+    'Pandas',
+    'Scikit-Learn',
+    'Power BI',
+    'Git & GitHub',
+  ]
+
+  const projects = [
+    {
+      title: 'Titanic Survival Prediction',
+      description:
+        'Machine learning project that predicts whether a passenger survived using Titanic passenger data.',
+      technology: 'Python • Pandas • Scikit-Learn',
+      link: 'https://github.com/Vipin0923/CODSOFT',
+    },
+    {
+      title: 'Movie Rating Prediction',
+      description:
+        'Regression project created to estimate movie ratings using historical movie information.',
+      technology: 'Python • Regression • Data Analysis',
+      link: 'https://github.com/Vipin0923/CODSOFT',
+    },
+    {
+      title: 'Iris Flower Classification',
+      description:
+        'Classification model that predicts the species of an Iris flower using its measurements.',
+      technology: 'Python • Classification • Scikit-Learn',
+      link: 'https://github.com/Vipin0923/CODSOFT',
+    },
+  ]
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="portfolio">
-        <img
-          src={profileImg}
-          alt="Vipin Profile"
-          className="profile-img"
-        />
+      <nav className="navbar">
+        <a href="#home" className="logo">
+          Vipin<span>.</span>
+        </a>
 
-        <h1>Hello, I am Vipin 👋</h1>
+        <ul className="nav-links">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
 
-        <h2>Data Science Student</h2>
+      <main>
+        <section id="home" className="hero-section">
+          <div className="hero-content">
+            <img
+              src={profileImg}
+              alt="Vipin Vishwakarma"
+              className="profile-img"
+            />
 
-        <p>
-          I am passionate about Data Science, Machine Learning and AI.
-        </p>
+            <p className="intro-text">Hello, I am</p>
 
-        <p>
-          Python • Machine Learning • Data Analytics • AI Enthusiast
-        </p>
+            <h1>Vipin Vishwakarma</h1>
 
-<a href="/Resume.pdf" download>
-  <button type="button">
-    Download Resume
-  </button>
-</a>
+            <h2>Data Science Student</h2>
 
-        <p className="college">
-          Technocrats Institute of Technology, Bhopal
-        </p>
+            <p className="hero-description">
+              I am passionate about Data Science, Machine Learning, Artificial
+              Intelligence and building useful projects with real-world data.
+            </p>
 
-        <p className="cgpa">
-          CGPA: 6.98
-        </p>
+            <p className="technology-text">
+              Python • Machine Learning • Data Analytics • AI
+            </p>
 
-        <div className="social-buttons">
-          <a
-            href="https://github.com/Vipin0923"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button type="button">
-              GitHub
-            </button>
-          </a>
+            <div className="hero-buttons">
+              <a href="/my-portfolio/Resume.pdf" download className="primary-btn">
+                Download Resume
+              </a>
 
-          <a
-            href="https://www.linkedin.com/in/vipin-data-scientist/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button type="button">
-              LinkedIn
-            </button>
-          </a>
-        </div>
-      </section>
+              <a
+                href="https://github.com/Vipin0923"
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-btn"
+              >
+                GitHub
+              </a>
 
-      {/* About Section */}
-      <section className="about-section">
-        <h2>About Me</h2>
+              <a
+                href="https://www.linkedin.com/in/vipin-data-scientist/"
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-btn"
+              >
+                LinkedIn
+              </a>
+            </div>
 
-        <p>
-          I am a Data Science student at Technocrats Institute of Technology,
-          Bhopal.
-        </p>
+            <div className="college-info">
+              <p>Technocrats Institute of Technology, Bhopal</p>
+              <p>Second Year • CGPA: 6.98</p>
+            </div>
+          </div>
+        </section>
 
-        <p>
-          I am interested in Machine Learning, Data Analytics and Artificial
-          Intelligence.
-        </p>
+        <section id="about" className="section about-section">
+          <div className="section-heading">
+            <p>Introduction</p>
+            <h2>About Me</h2>
+          </div>
 
-        <p>
-          I enjoy working on real-world datasets and building projects using
-          Python, Pandas, Scikit-Learn and Data Visualization tools.
-        </p>
-      </section>
-      <section className="skills-section">
-  <h2>My Skills</h2>
+          <div className="about-container">
+            <div className="about-card">
+              <h3>Who I Am</h3>
 
-  <div className="skills-container">
-    <div className="skill-card">Python</div>
-    <div className="skill-card">SQL</div>
-    <div className="skill-card">Machine Learning</div>
-    <div className="skill-card">Data Analysis</div>
-    <div className="skill-card">Pandas</div>
-    <div className="skill-card">Scikit-Learn</div>
-    <div className="skill-card">Power BI</div>
-    <div className="skill-card">Git & GitHub</div>
-  </div>
-</section>
-<section className="projects-section">
-  <h2>My Projects</h2>
+              <p>
+                I am a Data Science student at Technocrats Institute of
+                Technology, Bhopal. I am currently developing my skills in
+                Python, Machine Learning, Data Analysis and Artificial
+                Intelligence.
+              </p>
 
-  <div className="projects-container">
+              <p>
+                I enjoy working with datasets, finding meaningful patterns and
+                building beginner-friendly machine learning projects.
+              </p>
+            </div>
 
-    <div className="project-card">
-      <h3>Titanic Survival Prediction</h3>
-      <p>
-        Machine Learning project that predicts passenger survival using the Titanic dataset.
-      </p>
-    </div>
+            <div className="details-grid">
+              <div className="detail-card">
+                <span>01</span>
+                <h3>Education</h3>
+                <p>Data Science Student</p>
+              </div>
 
-    <div className="project-card">
-      <h3>Movie Rating Prediction</h3>
-      <p>
-        Data Science project that predicts movie ratings using regression techniques.
-      </p>
-    </div>
+              <div className="detail-card">
+                <span>02</span>
+                <h3>Current Year</h3>
+                <p>Second Year</p>
+              </div>
 
-    <div className="project-card">
-      <h3>Iris Flower Classification</h3>
-      <p>
-        Classification model that identifies flower species using machine learning.
-      </p>
-    </div>
+              <div className="detail-card">
+                <span>03</span>
+                <h3>Internship</h3>
+                <p>CODSOFT Data Science</p>
+              </div>
 
-  </div>
-</section>
-<section className="contact-section">
-  <h2>Contact Me</h2>
+              <div className="detail-card">
+                <span>04</span>
+                <h3>Location</h3>
+                <p>Bhopal, India</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-  <p>Email: hbollywoodmusichub@gmail.com</p>
+        <section id="skills" className="section skills-section">
+          <div className="section-heading">
+            <p>What I Know</p>
+            <h2>My Skills</h2>
+          </div>
 
-  <p>Location: Bhopal, Madhya Pradesh, India</p>
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
+              <div className="skill-card" key={skill}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{skill}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
 
-  <div className="contact-links">
-    <a
-      href="https://github.com/Vipin0923"
-      target="_blank"
-      rel="noreferrer"
-    >
-      GitHub
-    </a>
+        <section id="projects" className="section projects-section">
+          <div className="section-heading">
+            <p>My Work</p>
+            <h2>Projects</h2>
+          </div>
 
-    <a
-      href="https://www.linkedin.com/in/vipin-data-scientist/"
-      target="_blank"
-      rel="noreferrer"
-    >
-      LinkedIn
-    </a>
-  </div>
-</section>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <article className="project-card" key={project.title}>
+                <span className="project-number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-<footer>
-  <p>© 2026 Vipin Vishwakarma | Data Science Portfolio</p>
-</footer>
+                <h3>{project.title}</h3>
+
+                <p>{project.description}</p>
+
+                <div className="project-tech">{project.technology}</div>
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-link"
+                >
+                  View Project →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="section contact-section">
+          <div className="contact-card">
+            <div className="section-heading">
+              <p>Get in Touch</p>
+              <h2>Contact Me</h2>
+            </div>
+
+            <p className="contact-description">
+              I am open to internships, learning opportunities and beginner
+              Data Science projects.
+            </p>
+
+            <a
+              href="mailto:vipinbabuvishwakarma@gmail.com"
+              className="email-link"
+            >
+              vipinbabuvishwakarma@gmail.com
+            </a>
+
+            <p className="location-text">
+              Bhopal, Madhya Pradesh, India
+            </p>
+
+            <div className="contact-buttons">
+              <a
+                href="mailto:vipinbabuvishwakarma@gmail.com"
+                className="primary-btn"
+              >
+                Send Email
+              </a>
+
+              <a
+                href="https://github.com/Vipin0923"
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-btn"
+              >
+                GitHub
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/vipin-data-scientist/"
+                target="_blank"
+                rel="noreferrer"
+                className="secondary-btn"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <p>© 2026 Vipin Vishwakarma</p>
+        <p>Built with React and Vite</p>
+      </footer>
     </>
   )
 }
