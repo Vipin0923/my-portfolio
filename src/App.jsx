@@ -48,18 +48,6 @@ function App() {
       description:
         'Completed a one-month Data Science internship and worked on three machine learning projects.',
     },
-    {
-      title: 'Machine Learning Projects',
-      organization: 'Practical Learning',
-      description:
-        'Built classification and regression projects using Python, Pandas and Scikit-Learn.',
-    },
-    {
-      title: 'Portfolio Development',
-      organization: 'React + Vite',
-      description:
-        'Designed, developed and deployed a professional portfolio website using React and GitHub Pages.',
-    },
   ]
 
   const achievements = [
@@ -198,6 +186,31 @@ function App() {
           </div>
         </section>
 
+        {/* Statistics Section */}
+        <section className="stats-section">
+          <div className="stats-container">
+            <article className="stat-card glass-card">
+              <h2>3+</h2>
+              <p>Projects Completed</p>
+            </article>
+
+            <article className="stat-card glass-card">
+              <h2>1</h2>
+              <p>Internship Completed</p>
+            </article>
+
+            <article className="stat-card glass-card">
+              <h2>10+</h2>
+              <p>Technical Skills</p>
+            </article>
+
+            <article className="stat-card glass-card">
+              <h2>2nd</h2>
+              <p>Year Student</p>
+            </article>
+          </div>
+        </section>
+
         {/* About Section */}
         <section id="about" className="section about-section">
           <div className="section-heading">
@@ -286,7 +299,6 @@ function App() {
                 </span>
 
                 <h3>{project.title}</h3>
-
                 <p>{project.description}</p>
 
                 <div className="project-tech">{project.technology}</div>
@@ -344,7 +356,7 @@ function App() {
             <h2>Certificates</h2>
           </div>
 
-          <div className="certificates-grid">
+          <div className="certificates-grid single-certificate">
             {certificates.map((certificate, index) => (
               <article
                 className="certificate-card glass-card"
@@ -450,8 +462,40 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>© 2026 Vipin Vishwakarma</p>
-        <p>Designed and developed using React + Vite</p>
+        <div className="footer-content">
+          <div>
+            <h3>
+              Vipin<span>.</span>
+            </h3>
+            <p>Data Science Student and Machine Learning Enthusiast</p>
+          </div>
+
+          <div className="footer-links">
+            <a
+              href="https://github.com/Vipin0923"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/vipin-data-scientist/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+
+            <a href="mailto:vipinbabuvishwakarma@gmail.com">
+              Email
+            </a>
+          </div>
+        </div>
+
+        <p className="copyright">
+          © 2026 Vipin Vishwakarma. Built with React and Vite.
+        </p>
       </footer>
     </>
   )
