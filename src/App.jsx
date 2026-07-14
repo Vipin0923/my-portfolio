@@ -1,3 +1,4 @@
+import { motion } from 'motion/react'
 import './App.css'
 import profileImg from './assets/profile.jpg'
 
@@ -84,7 +85,12 @@ function App() {
           <div className="hero-orb hero-orb-two"></div>
 
           <div className="hero-layout">
-            <div className="hero-copy">
+            <motion.div
+              className="hero-copy"
+              initial={{ opacity: 0, x: -70 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
               <p className="hero-eyebrow">
                 DATA SCIENCE PORTFOLIO · 2026
               </p>
@@ -158,9 +164,14 @@ function App() {
                   <strong>6.98</strong>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="hero-visual">
+            <motion.div
+              className="hero-visual"
+              initial={{ opacity: 0, x: 70 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+            >
               <div className="hero-photo-frame">
                 <img
                   src={profileImg}
@@ -183,12 +194,18 @@ function App() {
                 <span>01</span>
                 <p>Internship</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         <section className="stats-section">
-          <div className="stats-container">
+          <motion.div
+            className="stats-container"
+            initial={{ opacity: 0, y: 45 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+          >
             <article className="stat-card glass-card">
               <h2>03+</h2>
               <p>Projects Completed</p>
@@ -208,7 +225,7 @@ function App() {
               <h2>6.98</h2>
               <p>Current CGPA</p>
             </article>
-          </div>
+          </motion.div>
         </section>
 
         <section id="about" className="section about-section">
@@ -217,7 +234,13 @@ function App() {
             <h2>About Me</h2>
           </div>
 
-          <div className="about-container">
+          <motion.div
+            className="about-container"
+            initial={{ opacity: 0, y: 55 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             <article className="about-card glass-card">
               <h3>Who I Am</h3>
 
@@ -263,7 +286,7 @@ function App() {
                 <p>Bhopal, India</p>
               </article>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section id="skills" className="section tech-section">
@@ -272,7 +295,13 @@ function App() {
             <h2>Tech Stack</h2>
           </div>
 
-          <div className="tech-grid">
+          <motion.div
+            className="tech-grid"
+            initial={{ opacity: 0, y: 55 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             <article className="tech-card">
               <div className="tech-card-top">
                 <span>01</span>
@@ -354,7 +383,7 @@ function App() {
                 repositories and deployments.
               </p>
             </article>
-          </div>
+          </motion.div>
         </section>
 
         <section
@@ -375,9 +404,18 @@ function App() {
 
           <div className="premium-projects-list">
             {projects.map((project) => (
-              <article
+              <motion.article
                 className="premium-project-card"
                 key={project.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: Number(project.number) * 0.08,
+                  ease: 'easeOut',
+                }}
+                whileHover={{ y: -10 }}
               >
                 <div
                   className={`project-visual ${project.visualClass}`}
@@ -443,7 +481,7 @@ function App() {
                     </span>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
@@ -457,7 +495,13 @@ function App() {
             <h2>My Journey</h2>
           </div>
 
-          <div className="journey-grid">
+          <motion.div
+            className="journey-grid"
+            initial={{ opacity: 0, y: 55 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             <article className="journey-main-card">
               <div className="journey-top">
                 <span>2026</span>
@@ -525,7 +569,7 @@ function App() {
                 and earned certification.
               </p>
             </article>
-          </div>
+          </motion.div>
         </section>
 
         <section id="contact" className="section connect-section">
@@ -533,7 +577,13 @@ function App() {
             CONNECT
           </div>
 
-          <div className="connect-layout">
+          <motion.div
+            className="connect-layout"
+            initial={{ opacity: 0, y: 55 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.75, ease: 'easeOut' }}
+          >
             <div className="connect-content">
               <p className="connect-eyebrow">
                 LET&apos;S WORK TOGETHER
@@ -627,7 +677,7 @@ function App() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
 
