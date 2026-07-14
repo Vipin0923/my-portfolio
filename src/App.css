@@ -2465,3 +2465,122 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* ===================================
+   EXTRA MOBILE OPTIMIZATION
+=================================== */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+
+  .hero-layout {
+    gap: 40px;
+  }
+
+  .hero-photo-frame {
+    width: 280px;
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .premium-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .premium-project-card {
+    border-radius: 22px;
+  }
+
+  .premium-project-content {
+    padding: 24px;
+  }
+
+  .premium-project-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .tech-card {
+    min-height: auto;
+  }
+
+  .journey-highlights {
+    justify-content: space-between;
+  }
+
+  .connect-content h2 {
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  .connect-background-text {
+    display: none;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-name {
+    font-size: 3rem;
+    letter-spacing: -2px;
+  }
+
+  .hero-role {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero-role-dot {
+    display: none;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .premium-project-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .journey-main-card h3 {
+    font-size: 2rem;
+  }
+
+  .connect-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .connect-email {
+    font-size: 0.8rem;
+  }
+}
