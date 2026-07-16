@@ -2773,3 +2773,196 @@ a {
     overflow-wrap: anywhere;
   }
 }
+
+/* =========================================================
+   SAFE LIVE BACKGROUND + 3D WATERMARK + BUBBLE CURSOR PATCH
+   Added after the complete original portfolio CSS.
+   ========================================================= */
+
+body {
+  position: relative;
+  background: #050505;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* Fixed live neural canvas: decorative and never takes layout space */
+.neural-background {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(249, 115, 22, 0.10), transparent 30%),
+    radial-gradient(circle at 85% 70%, rgba(56, 189, 248, 0.12), transparent 32%),
+    #050505;
+}
+
+/* Keep all website content above the fixed canvas */
+.navbar,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sections remain readable while the live canvas subtly shows through */
+.about-section,
+.tech-section,
+.selected-projects-section,
+.journey-section,
+.connect-section,
+.stats-section {
+  position: relative;
+}
+
+/* Large 3D-style Data Scientist watermark inside Hero only */
+.hero-data-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: max-content;
+  max-width: 96vw;
+  color: rgba(255, 255, 255, 0.028);
+  font-size: clamp(5rem, 13vw, 13rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%) perspective(700px) rotateX(62deg) rotateZ(-7deg);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06),
+    0 18px 45px rgba(56, 189, 248, 0.10),
+    0 30px 70px rgba(249, 115, 22, 0.08);
+  animation: dataScientistFloat 8s ease-in-out infinite;
+}
+
+@keyframes dataScientistFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) perspective(700px) rotateX(62deg) rotateZ(-7deg) translateY(0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) perspective(700px) rotateX(59deg) rotateZ(-5deg) translateY(-18px);
+  }
+}
+
+/* Hero content must stay above watermark */
+.hero-grid,
+.hero-orb,
+.hero-layout {
+  position: relative;
+  z-index: 2;
+}
+
+.rotating-role {
+  min-width: 13.5rem;
+  display: inline-block;
+  color: #ffffff;
+}
+
+/* Bubble cursor is only enabled on desktop/fine pointer devices */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  margin-left: -3.5px;
+  background: #f97316;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.95);
+}
+
+.cursor-ring {
+  width: 38px;
+  height: 38px;
+  margin-top: -19px;
+  margin-left: -19px;
+  border: 1px solid rgba(56, 189, 248, 0.75);
+  background: rgba(56, 189, 248, 0.07);
+  box-shadow:
+    0 0 24px rgba(56, 189, 248, 0.20),
+    inset 0 0 15px rgba(249, 115, 22, 0.07);
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    margin 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.cursor-ring.cursor-hover {
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  margin-left: -30px;
+  border-color: rgba(249, 115, 22, 0.9);
+  background: rgba(249, 115, 22, 0.10);
+}
+
+@media (pointer: fine) and (min-width: 769px) {
+  .cursor-dot,
+  .cursor-ring {
+    opacity: 1;
+  }
+
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-data-watermark {
+    font-size: clamp(4rem, 16vw, 8rem);
+    opacity: 0.65;
+  }
+
+  .rotating-role {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .neural-background {
+    opacity: 0.24;
+  }
+
+  .hero-data-watermark {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-data-watermark {
+    animation: none;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}

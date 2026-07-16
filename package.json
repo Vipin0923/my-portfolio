@@ -12,7 +12,9 @@
   "dependencies": {
     "motion": "^12.42.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^4.3.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

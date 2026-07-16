@@ -1,6 +1,250 @@
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import './App.css'
 import profileImg from './assets/profile.jpg'
+
+
+function NeuralBackground() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return undefined
+
+    const context = canvas.getContext('2d')
+    if (!context) return undefined
+
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+
+    let animationFrameId
+    let particles = []
+    const pointer = { x: null, y: null }
+
+    const createParticles = () => {
+      const particleCount = Math.min(
+        82,
+        Math.max(34, Math.floor(window.innerWidth / 22)),
+      )
+
+      particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.24,
+        vy: (Math.random() - 0.5) * 0.24,
+        radius: Math.random() * 1.6 + 0.7,
+      }))
+    }
+
+    const resizeCanvas = () => {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2)
+
+      canvas.width = Math.floor(window.innerWidth * ratio)
+      canvas.height = Math.floor(window.innerHeight * ratio)
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
+
+      context.setTransform(ratio, 0, 0, ratio, 0, 0)
+      createParticles()
+    }
+
+    const handlePointerMove = (event) => {
+      pointer.x = event.clientX
+      pointer.y = event.clientY
+    }
+
+    const handlePointerLeave = () => {
+      pointer.x = null
+      pointer.y = null
+    }
+
+    const draw = () => {
+      context.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+      particles.forEach((particle) => {
+        if (!reduceMotion) {
+          particle.x += particle.vx
+          particle.y += particle.vy
+        }
+
+        if (particle.x < -20) particle.x = window.innerWidth + 20
+        if (particle.x > window.innerWidth + 20) particle.x = -20
+        if (particle.y < -20) particle.y = window.innerHeight + 20
+        if (particle.y > window.innerHeight + 20) particle.y = -20
+
+        if (
+          pointer.x !== null &&
+          pointer.y !== null &&
+          !reduceMotion
+        ) {
+          const dx = pointer.x - particle.x
+          const dy = pointer.y - particle.y
+          const distance = Math.hypot(dx, dy)
+
+          if (distance > 0 && distance < 130) {
+            particle.x -= (dx / distance) * 0.18
+            particle.y -= (dy / distance) * 0.18
+          }
+        }
+
+        context.beginPath()
+        context.arc(
+          particle.x,
+          particle.y,
+          particle.radius,
+          0,
+          Math.PI * 2,
+        )
+        context.fillStyle = 'rgba(56, 189, 248, 0.55)'
+        context.fill()
+      })
+
+      for (let first = 0; first < particles.length; first += 1) {
+        for (
+          let second = first + 1;
+          second < particles.length;
+          second += 1
+        ) {
+          const dx = particles[first].x - particles[second].x
+          const dy = particles[first].y - particles[second].y
+          const distance = Math.hypot(dx, dy)
+
+          if (distance < 118) {
+            context.beginPath()
+            context.moveTo(particles[first].x, particles[first].y)
+            context.lineTo(particles[second].x, particles[second].y)
+            context.strokeStyle = `rgba(56, 189, 248, ${
+              0.16 * (1 - distance / 118)
+            })`
+            context.lineWidth = 0.7
+            context.stroke()
+          }
+        }
+      }
+
+      if (!reduceMotion) {
+        animationFrameId = window.requestAnimationFrame(draw)
+      }
+    }
+
+    resizeCanvas()
+    draw()
+
+    window.addEventListener('resize', resizeCanvas)
+    window.addEventListener('pointermove', handlePointerMove)
+    document.addEventListener('pointerleave', handlePointerLeave)
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('resize', resizeCanvas)
+      window.removeEventListener('pointermove', handlePointerMove)
+      document.removeEventListener('pointerleave', handlePointerLeave)
+    }
+  }, [])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="neural-background"
+      aria-hidden="true"
+    />
+  )
+}
+
+function BubbleCursor() {
+  const dotRef = useRef(null)
+  const ringRef = useRef(null)
+
+  useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches
+    if (!finePointer) return undefined
+
+    let animationFrameId
+    let mouseX = window.innerWidth / 2
+    let mouseY = window.innerHeight / 2
+    let ringX = mouseX
+    let ringY = mouseY
+
+    const moveCursor = (event) => {
+      mouseX = event.clientX
+      mouseY = event.clientY
+
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
+      }
+    }
+
+    const animateRing = () => {
+      ringX += (mouseX - ringX) * 0.16
+      ringY += (mouseY - ringY) * 0.16
+
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`
+      }
+
+      animationFrameId = window.requestAnimationFrame(animateRing)
+    }
+
+    const updateHoverState = (event) => {
+      const interactiveElement = event.target.closest(
+        'a, button, .tech-card, .premium-project-card, .journey-card, .detail-card',
+      )
+
+      ringRef.current?.classList.toggle(
+        'cursor-hover',
+        Boolean(interactiveElement),
+      )
+    }
+
+    window.addEventListener('pointermove', moveCursor)
+    document.addEventListener('mouseover', updateHoverState)
+    animateRing()
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('pointermove', moveCursor)
+      document.removeEventListener('mouseover', updateHoverState)
+    }
+  }, [])
+
+  return (
+    <>
+      <span ref={dotRef} className="cursor-dot" aria-hidden="true" />
+      <span ref={ringRef} className="cursor-ring" aria-hidden="true" />
+    </>
+  )
+}
+
+function RotatingRole() {
+  const roles = [
+    'Data Science Student',
+    'Machine Learning Enthusiast',
+    'Aspiring Data Scientist',
+  ]
+
+  const [roleIndex, setRoleIndex] = useState(0)
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setRoleIndex((currentIndex) => (currentIndex + 1) % roles.length)
+    }, 2600)
+
+    return () => window.clearInterval(intervalId)
+  }, [roles.length])
+
+  return (
+    <motion.span
+      key={roles[roleIndex]}
+      className="rotating-role"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
+    >
+      {roles[roleIndex]}
+    </motion.span>
+  )
+}
 
 function App() {
   const resumeUrl = `${import.meta.env.BASE_URL}Resume.pdf`
@@ -46,6 +290,9 @@ function App() {
 
   return (
     <>
+      <NeuralBackground />
+      <BubbleCursor />
+
       <nav className="navbar">
         <a href="#home" className="logo">
           Vipin<span>.</span>
@@ -83,6 +330,9 @@ function App() {
           <div className="hero-grid"></div>
           <div className="hero-orb hero-orb-one"></div>
           <div className="hero-orb hero-orb-two"></div>
+          <div className="hero-data-watermark" aria-hidden="true">
+            DATA SCIENTIST
+          </div>
 
           <div className="hero-layout">
             <motion.div
@@ -101,9 +351,9 @@ function App() {
               </h1>
 
               <div className="hero-role">
-                <span>Data Science Student</span>
+                <RotatingRole />
                 <span className="hero-role-dot">•</span>
-                <span>Machine Learning Enthusiast</span>
+                <span>Python · ML · Data Analytics</span>
               </div>
 
               <p className="hero-description premium-description">
